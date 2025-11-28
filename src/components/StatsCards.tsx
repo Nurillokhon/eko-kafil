@@ -39,7 +39,7 @@ export default function StatsCards() {
 
   return (
     <div className="myContainer">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 w-full max-w-full ">
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-5 gap-4 w-full max-w-full  p-4 ">
         {items.map((item, i) => (
           <div
             key={i}
