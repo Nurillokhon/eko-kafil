@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@layer components {
+    .myContainer {
+        @apply mx-auto w-[96%];
+    }
+    .myFlexCenter {
+        @apply flex justify-center items-center;
+    }
+}
+
+@theme {
+    --color-main: #832124;
+}
+
+.leaflet-container {   width: 100%;   height: 100%; }
