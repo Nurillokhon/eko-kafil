@@ -3,11 +3,15 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { WiDayCloudy } from "react-icons/wi";
 import { FaInfoCircle, FaExclamationTriangle } from "react-icons/fa";
+import { useGetRequest } from "../service/requests";
 
 const UzbekistanMap = () => {
+  const { data } = useGetRequest<any>({ url: "weather/weakly/" });
+
+  const todayWeather = data?.[0];
+
   return (
     <div className="flex flex-col lg:flex-row justify-center items-start gap-6 p-4">
-      {/* MAP with soft shadow */}
       <div
         className="
         w-full lg:w-[70%] 
@@ -34,9 +38,8 @@ const UzbekistanMap = () => {
         </MapContainer>
       </div>
 
-      {/* RIGHT SIDE */}
       <div className="w-full lg:w-[30%] space-y-6">
-        {/* WEATHER CARD — Creative glass style */}
+        {/* WEATHER BOX */}
         <div
           className="
             rounded-3xl p-6 border border-main/40 
@@ -49,22 +52,31 @@ const UzbekistanMap = () => {
           <div className="flex justify-between items-start">
             <div>
               <h1 className="text-5xl font-bold text-main tracking-tight">
-                24°C
+                {todayWeather
+                  ? Math.round(todayWeather.temperature_2m_max) + "°C"
+                  : "--"}
               </h1>
-              <p className="text-lg text-gray-600 font-medium">Partly Cloudy</p>
+              <p className="text-lg text-gray-600 font-medium">
+                {todayWeather?.rain_sum > 0 ? "Rainy" : "Partly Cloudy"}
+              </p>
             </div>
             <WiDayCloudy size={68} className="text-main/90 drop-shadow-sm" />
           </div>
 
-          {/* Stats */}
           <div className="border-t border-main/20 mt-6 pt-4 grid grid-cols-3 text-sm">
             <div className="text-center">
               <p className="text-gray-500">Humidity</p>
-              <p className="text-xl font-semibold text-main">45%</p>
+              <p className="text-xl font-semibold text-main">
+                {todayWeather ? "45%" : "--"}
+              </p>
             </div>
             <div className="text-center">
               <p className="text-gray-500">Wind</p>
-              <p className="text-xl font-semibold text-main">3.5 m/s</p>
+              <p className="text-xl font-semibold text-main">
+                {todayWeather
+                  ? todayWeather.wind_speed_10m_max.toFixed(1) + " m/s"
+                  : "--"}
+              </p>
             </div>
             <div className="text-center">
               <p className="text-gray-500">Pressure</p>
@@ -73,12 +85,11 @@ const UzbekistanMap = () => {
           </div>
         </div>
 
-        {/* TITLE */}
+        {/* ALERTS */}
         <h2 className="text-xl font-semibold text-main tracking-tight pl-1">
           Health Alerts
         </h2>
 
-        {/* ALERT 1 — Soft creative */}
         <div
           className="
           border border-orange-300 bg-orange-50/70 
@@ -92,13 +103,11 @@ const UzbekistanMap = () => {
               Moderate Air Quality Alert
             </h3>
             <p className="text-sm text-gray-700 leading-relaxed">
-              Sensitive groups should limit prolonged outdoor activities in
-              Namangan and Fergana.
+              Sensitive groups should limit prolonged outdoor activities.
             </p>
           </div>
         </div>
 
-        {/* ALERT 2 — Soft creative */}
         <div
           className="
           border border-green-300 bg-green-50/70 
@@ -110,8 +119,7 @@ const UzbekistanMap = () => {
           <div>
             <h3 className="text-green-700 font-semibold">Good Air Quality</h3>
             <p className="text-sm text-gray-700 leading-relaxed">
-              Air quality is excellent in Nukus and Urgench. Ideal for outdoor
-              activity.
+              Air quality is excellent today.
             </p>
           </div>
         </div>

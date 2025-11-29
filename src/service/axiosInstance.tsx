@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: "http://212.28.177.133:8080/api/v1/",
 });
 
 axiosInstance.interceptors.request.use(
