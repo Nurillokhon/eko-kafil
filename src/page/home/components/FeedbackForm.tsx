@@ -2,9 +2,37 @@
 
 import { FaQuestionCircle, FaBullseye, FaCogs } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
+import { useMutateRequest } from "../../../service/requests";
 
 export default function FeedbackForm() {
   const { t } = useTranslation();
+  const { mutateAsync } = useMutateRequest();
+
+  const [form, setForm] = useState({
+    text: "",
+    phone: "",
+    rating: 5,
+  });
+
+  const handleChange = (key: any, value: any) => {
+    setForm((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const res = await mutateAsync({
+        url: "/feedback/create",
+        method: "POST",
+        data: form,
+      });
+      if (res) {
+        alert("send!");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const cards = [
     {
@@ -72,6 +100,8 @@ export default function FeedbackForm() {
                 focus:ring-2 focus:ring-main/50 outline-none mb-5
               "
               placeholder={t("text_placeholder")}
+              value={form.text}
+              onChange={(e) => handleChange("text", e.target.value)}
             />
             <label className="block text-sm text-gray-700 mb-1">
               {t("phone_label")}
@@ -83,6 +113,8 @@ export default function FeedbackForm() {
                 focus:ring-2 focus:ring-main/50 outline-none mb-5
               "
               placeholder={t("phone_placeholder")}
+              value={form.phone}
+              onChange={(e) => handleChange("phone", e.target.value)}
             />
             <label className="block text-sm text-gray-700 mb-1">
               {t("rating_label")}
@@ -92,6 +124,8 @@ export default function FeedbackForm() {
                 w-full p-3 rounded-xl border border-main/20 bg-white/70 
                 focus:ring-2 focus:ring-main/50 outline-none mb-5
               "
+              value={form.rating}
+              onChange={(e) => handleChange("rating", Number(e.target.value))}
             >
               <option value={5}>⭐⭐⭐⭐⭐ — 5</option>
               <option value={4}>⭐⭐⭐⭐ — 4</option>
@@ -99,18 +133,8 @@ export default function FeedbackForm() {
               <option value={2}>⭐⭐ — 2</option>
               <option value={1}>⭐ — 1</option>
             </select>
-            <label className="block text-sm text-gray-700 mb-1">
-              {t("parent_label")}
-            </label>
-            <input
-              type="number"
-              className="
-                w-full p-3 rounded-xl border border-main/20 bg-white/70 
-                focus:ring-2 focus:ring-main/50 outline-none mb-7
-              "
-              placeholder="0"
-            />
             <button
+              onClick={handleSubmit}
               className="
                 w-full py-3 bg-main text-white font-semibold text-lg
                 rounded-2xl shadow-[0_8px_20px_rgba(0,0,0,0.2)]
