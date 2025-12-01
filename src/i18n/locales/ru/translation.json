@@ -1,0 +1,22 @@
+{
+  "main_title": "Карта качества воздуха Узбекистана",
+  "weather_title": "Погода на сегодня",
+  "loading_map": "Загрузка карты...",
+  "loading_weather": "Загрузка данных о погоде...",
+  "rainy": "Дождливо",
+  "partly_cloudy": "Переменная облачность",
+  "humidity": "Влажность",
+  "wind": "Ветер",
+  "pressure": "Давление",
+  "health_alerts": "Предупреждения для здоровья",
+  "moderate_air_quality": "Умеренное качество воздуха",
+  "moderate_air_quality_desc": "Чувствительным группам следует ограничить длительное пребывание на улице.",
+  "good_air_quality": "Хорошее качество воздуха",
+  "good_air_quality_desc": "Сегодня качество воздуха отличное.",
+  "insured_companies": "Количество застрахованных организаций",
+  "insurance_liability": "Страховая ответственность",
+  "insurance_premiums": "Страховые премии",
+  "insurance_compensation": "Страховое возмещение",
+  "insurance_cases": "Страховые случаи",
+  "insurance_statistics": "Статистика страхования"
+}

@@ -1,0 +1,22 @@
+{
+  "main_title": "O‘zbekiston Havo Sifati Xarita",
+  "weather_title": "Bugungi Ob-havo",
+  "loading_map": "Xarita yuklanmoqda...",
+  "loading_weather": "Ob-havo maʼlumoti yuklanmoqda...",
+  "rainy": "Yomgʻirli",
+  "partly_cloudy": "Qisman bulutli",
+  "humidity": "Namlik",
+  "wind": "Shamol",
+  "pressure": "Bosim",
+  "health_alerts": "Sogʻliq bo‘yicha ogohlantirishlar",
+  "moderate_air_quality": "O‘rtacha havo sifati",
+  "moderate_air_quality_desc": "Sezuvchan guruhlar uzoq vaqt tashqarida bo‘lishni cheklashlari kerak.",
+  "good_air_quality": "Yaxshi havo sifati",
+  "good_air_quality_desc": "Bugun havo sifati juda yaxshi.",
+  "insured_companies": "Sug‘urtalangan tashkilotlar soni",
+  "insurance_liability": "Sug‘urta javobgarligi",
+  "insurance_premiums": "Sug‘urta mukofotlari",
+  "insurance_compensation": "Sug‘urta tovoni",
+  "insurance_cases": "Sug‘urta hodisalari",
+  "insurance_statistics": "Sug‘urta statistikasi"
+}

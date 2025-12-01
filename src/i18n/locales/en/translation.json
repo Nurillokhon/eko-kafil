@@ -1,0 +1,22 @@
+{
+  "main_title": "Uzbekistan Air Quality Map",
+  "weather_title": "Today's Weather",
+  "loading_map": "Loading map...",
+  "loading_weather": "Loading weather data...",
+  "rainy": "Rainy",
+  "partly_cloudy": "Partly Cloudy",
+  "humidity": "Humidity",
+  "wind": "Wind",
+  "pressure": "Pressure",
+  "health_alerts": "Health Alerts",
+  "moderate_air_quality": "Moderate Air Quality",
+  "moderate_air_quality_desc": "Sensitive groups should limit prolonged outdoor activities.",
+  "good_air_quality": "Good Air Quality",
+  "good_air_quality_desc": "Air quality is excellent today.",
+  "insured_companies": "Number of insured organizations",
+  "insurance_liability": "Insurance liability",
+  "insurance_premiums": "Insurance premiums",
+  "insurance_compensation": "Insurance compensation",
+  "insurance_cases": "Insurance cases",
+  "insurance_statistics": "Insurance statistics"
+}

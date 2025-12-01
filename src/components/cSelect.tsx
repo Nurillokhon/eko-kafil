@@ -1,6 +1,5 @@
 /** @format */
 
-import React from "react";
 import {
   Select,
   SelectContent,
@@ -8,12 +7,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+import { useTranslation } from "react-i18next";
 
 const CountrySelect = () => {
-  const [value, setValue] = React.useState<string>("uz");
+  const { i18n } = useTranslation();
+  const changeLang = (value: string) => {
+    i18n.changeLanguage(value);
+    window.location.reload();
+  };
 
   return (
-    <Select value={value} onValueChange={(val: string) => setValue(val)}>
+    <Select value={i18n.language} onValueChange={changeLang}>
       <SelectTrigger
         className="
           w-[90px] text-main 
@@ -51,7 +55,7 @@ const CountrySelect = () => {
         </SelectItem>
 
         <SelectItem
-          value="us"
+          value="en"
           className="hover:bg-main/20 focus:bg-main/30 text-main"
         >
           Eng
