@@ -147,6 +147,13 @@ const UzbekistanMap = () => {
           center={[41.2995, 69.2401]}
           zoom={6}
           scrollWheelZoom={true}
+          maxZoom={12}
+          minZoom={6}
+          maxBounds={[
+            [37.0, 55.0],
+            [46.0, 74.0],
+          ]}
+          maxBoundsViscosity={1.0}
           className="w-full h-full"
         >
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
