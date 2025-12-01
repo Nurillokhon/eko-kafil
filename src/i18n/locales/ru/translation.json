@@ -18,5 +18,19 @@
   "insurance_premiums": "Страховые премии",
   "insurance_compensation": "Страховое возмещение",
   "insurance_cases": "Страховые случаи",
-  "insurance_statistics": "Статистика страхования"
+  "insurance_statistics": "Статистика страхования",
+  "feedback_title": "Оставить отзыв",
+  "text_label": "Текст",
+  "text_placeholder": "Напишите ваш отзыв...",
+  "phone_label": "Номер телефона",
+  "phone_placeholder": "+998 xx xxx xx xx",
+  "rating_label": "Оценка",
+  "parent_label": "Parent ID",
+  "submit_btn": "Отправить",
+  "info_1_title": "Зачем оставлять отзыв?",
+  "info_1_text": "Ваше мнение помогает нам улучшать качество обслуживания.",
+  "info_2_title": "Наша цель",
+  "info_2_text": "Создать самый удобный и безопасный страховой сервис для клиентов.",
+  "info_3_title": "Как работает процесс?",
+  "info_3_text": "Отзывы проверяются модератором и добавляются в систему."
 }

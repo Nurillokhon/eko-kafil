@@ -18,5 +18,19 @@
   "insurance_premiums": "Insurance premiums",
   "insurance_compensation": "Insurance compensation",
   "insurance_cases": "Insurance cases",
-  "insurance_statistics": "Insurance statistics"
+  "insurance_statistics": "Insurance statistics",
+  "feedback_title": "Leave Feedback",
+  "text_label": "Message",
+  "text_placeholder": "Write your feedback...",
+  "phone_label": "Phone number",
+  "phone_placeholder": "+998 xx xxx xx xx",
+  "rating_label": "Rating",
+  "parent_label": "Parent ID",
+  "submit_btn": "Submit",
+  "info_1_title": "Why leave feedback?",
+  "info_1_text": "Your feedback helps us improve service quality.",
+  "info_2_title": "Our mission",
+  "info_2_text": "To provide the most convenient and safe insurance service for clients.",
+  "info_3_title": "How does the process work?",
+  "info_3_text": "Feedback is reviewed by a moderator and added to the system."
 }

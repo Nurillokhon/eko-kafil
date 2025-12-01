@@ -18,5 +18,19 @@
   "insurance_premiums": "Sug‘urta mukofotlari",
   "insurance_compensation": "Sug‘urta tovoni",
   "insurance_cases": "Sug‘urta hodisalari",
-  "insurance_statistics": "Sug‘urta statistikasi"
+  "insurance_statistics": "Sug‘urta statistikasi",
+  "feedback_title": "Fikr qoldirish",
+  "text_label": "Matn",
+  "text_placeholder": "Fikringizni yozing...",
+  "phone_label": "Telefon raqam",
+  "phone_placeholder": "+998 xx xxx xx xx",
+  "rating_label": "Baholash",
+  "parent_label": "Parent ID",
+  "submit_btn": "Yuborish",
+  "info_1_title": "Nega fikr qoldirish kerak?",
+  "info_1_text": "Sizning fikringiz bizga xizmat sifatini yaxshilashda yordam beradi.",
+  "info_2_title": "Bizning maqsadimiz",
+  "info_2_text": "Mijozlar uchun eng qulay va xavfsiz sug‘urta xizmatini yaratish.",
+  "info_3_title": "Jarayon qanday ishlaydi?",
+  "info_3_text": "Fikrlar moderator tomonidan ko‘rib chiqiladi va tizimga qo‘shiladi."
 }

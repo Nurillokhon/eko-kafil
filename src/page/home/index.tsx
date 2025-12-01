@@ -2,6 +2,7 @@
 
 import Navbar from "../../components/Navbar";
 import StatsCards from "../../components/StatsCards";
+import FeedbackForm from "./components/FeedbackForm";
 import MainSec from "./components/mainSec";
 
 const Index = () => {
@@ -10,6 +11,7 @@ const Index = () => {
       <Navbar />
       <MainSec />
       <StatsCards />
+      <FeedbackForm />
     </div>
   );
 };
