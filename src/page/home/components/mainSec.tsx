@@ -12,7 +12,7 @@ const MainSec = () => {
   return (
     <div className="myContainer flex flex-col lg:flex-row justify-center items-start gap-6 p-4">
       <div className="w-full lg:w-[70%]">
-        <h1 className="text-3xl font-bold">{t("main_title")}</h1>
+        <h1 className="text-3xl font-bold mb-4 text-main">{t("main_title")}</h1>
 
         <Suspense
           fallback={
@@ -25,9 +25,10 @@ const MainSec = () => {
         </Suspense>
       </div>
 
-      {/* WEATHER SECTION */}
       <div className="w-full lg:w-[30%]">
-        <h1 className="text-3xl font-bold mb-4">{t("weather_title")}</h1>
+        <h1 className="text-3xl font-bold mb-4 text-main ">
+          {t("weather_title")}
+        </h1>
 
         <Suspense
           fallback={
