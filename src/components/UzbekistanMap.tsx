@@ -7,46 +7,16 @@ import {
   GeoJSON,
   Marker,
   useMap,
+  Popup,
 } from "react-leaflet";
 
 import regions from "../constants/gis.regions.json";
 import type { FeatureCollection, Feature } from "geojson";
 import { useEffect } from "react";
+import { useGetRequest } from "../service/requests";
 const regionsGeoJSON: FeatureCollection = {
   type: "FeatureCollection",
   features: regions as unknown as Feature[],
-};
-
-const staticData: Record<
-  string,
-  { aqi: number; status: string; pollutant?: string }
-> = {
-  "Tashkent city": { aqi: 42, status: "Good", pollutant: "PM2.5" },
-  "Namangan region": { aqi: 75, status: "Moderate", pollutant: "PM10" },
-  "Tashkent region": { aqi: 68, status: "Moderate", pollutant: "PM2.5" },
-  "Fergana region": { aqi: 82, status: "Moderate", pollutant: "PM10" },
-  "Andijan region": { aqi: 95, status: "Moderate", pollutant: "PM2.5" },
-  "Syrdarya region": { aqi: 58, status: "Moderate", pollutant: "PM2.5" },
-  "Jizzakh region": { aqi: 87, status: "Moderate", pollutant: "PM10" },
-  "Navoi region": { aqi: 45, status: "Good", pollutant: "PM2.5" },
-  "Samarkand region": {
-    aqi: 110,
-    status: "Unhealthy for Sensitive",
-    pollutant: "PM2.5",
-  },
-  "Kashkadarya province": {
-    aqi: 102,
-    status: "Unhealthy for Sensitive",
-    pollutant: "PM2.5",
-  },
-  "Surkhandarya region": { aqi: 93, status: "Moderate", pollutant: "PM10" },
-  "Bukhara region": { aqi: 55, status: "Moderate", pollutant: "PM2.5" },
-  "Khorezm region": { aqi: 67, status: "Moderate", pollutant: "PM10" },
-  "Republic of Karakalpakstan": {
-    aqi: 67,
-    status: "Moderate",
-    pollutant: "PM10",
-  },
 };
 
 function getAqiColor(aqi: number | null) {
@@ -59,6 +29,14 @@ function getAqiColor(aqi: number | null) {
 }
 
 const UzbekistanMap = () => {
+  const { data } = useGetRequest<any>({ url: "/weather/daily/" });
+
+  if (!data) {
+    return (
+      <div className="w-full h-[350px] md:h-[450px] lg:h-[530px] rounded-3xl bg-gray-100 animate-pulse" />
+    );
+  }
+
   const regionStyle = {
     color: "#2563eb",
     weight: 1,
@@ -74,7 +52,7 @@ const UzbekistanMap = () => {
       map.fitBounds(layer.getBounds(), {
         padding: [4, 5],
       });
-    }, [geojson, map]);
+    }, [geojson, map, data]);
 
     return null;
   }
@@ -82,17 +60,18 @@ const UzbekistanMap = () => {
   const renderRegionBadges = () => {
     return regionsGeoJSON.features.map((feature, idx) => {
       const propName =
-        (feature.properties && (feature.properties as any).region_name_en) ||
+        (feature.properties && (feature.properties as any).parent_code) ||
         (feature.properties && (feature.properties as any).region) ||
         `region-${idx}`;
 
-      const info = staticData[propName] ?? null;
+      const info = data[propName] ?? null;
 
       const layer = L.geoJSON(feature as any);
       const center = layer.getBounds().getCenter();
 
-      const aqiValue = info ? info.aqi : 0;
+      const aqiValue = info ? info.aqi : null;
       const aqiColor = getAqiColor(aqiValue);
+
       const html = `
         <div class="aqi-badge" style="
           display:inline-flex;
@@ -105,14 +84,14 @@ const UzbekistanMap = () => {
           box-shadow:0 4px 10px rgba(0,0,0,0.12);
           background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,250,0.85));
           border: 2px solid ${aqiColor};
-          font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+          font-family: Inter, system-ui;
         ">
-          <div style="font-size:14px; font-weight:700; color:${aqiColor};">${
-        aqiValue !== null ? aqiValue : "--"
-      }</div>
-          <div style="font-size:10px; color:#333; margin-top:2px;">${
-            info?.pollutant ?? ""
-          }</div>
+          <div style="font-size:14px; font-weight:700; color:${aqiColor};">
+            ${aqiValue ?? "--"}
+          </div>
+          <div style="font-size:10px; color:#333; margin-top:2px;">
+            ${info?.pollutant ?? ""}
+          </div>
         </div>
       `;
 
@@ -128,7 +107,27 @@ const UzbekistanMap = () => {
           key={`badge-${idx}`}
           position={[center.lat, center.lng]}
           icon={icon}
-        />
+        >
+          <Popup className="">
+            <div className={`space-y-1 text-sm`}>
+              <div className="font-semibold text-gray-800">{propName}</div>
+
+              <div>
+                <span className="font-medium">AQI:</span> {aqiValue ?? "--"}
+              </div>
+
+              <div>
+                <span className="font-medium">Pollutant:</span>{" "}
+                {info?.pollutant ?? "Noma’lum"}
+              </div>
+
+              <div>
+                <span className="font-medium">Nomi:</span>{" "}
+                {info?.region_name ?? "—"}
+              </div>
+            </div>
+          </Popup>
+        </Marker>
       );
     });
   };
