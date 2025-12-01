@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const axiosInstance = axios.create({
-  baseURL: "http://212.28.177.133:8080/api/v1/",
+  baseURL: "https://api.geostat.uz/api/v1/",
 });
 
 axiosInstance.interceptors.request.use(
